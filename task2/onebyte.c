@@ -33,10 +33,24 @@ int onebyte_release(struct inode *inode, struct file *filep)
 ssize_t onebyte_read(struct file *filep, char *buf, size_t count, loff_t *f_pos)
 {
 	/*please complete the function on your own*/
+	if (*f_pos == 0) {
+		copy_to_user(buf, onebyte_data, 1); /*copy one byte from kernel space to user sapce*/
+		*f_pos += 1; /* increment f_pos */
+		return 1; /* reurn the size of byte has been read */
+	} else {
+		return 0;
+	}
 }
 ssize_t onebyte_write(struct file *filep, const char *buf, size_t count, loff_t *f_pos)
 {
 	/*please complete the function on your own*/
+	if (*f_pos == 0) {
+		copy_from_user(onebyte_data, buf, 1); /*copy one byte from user space to kernel sapce*/
+		*f_pos += 1; /* increment f_pos */
+		return 1; /* reurn the size of byte has been written */
+	} else {
+		return -ENOSPC; /* no more space */
+	}
 }
 static int onebyte_init(void)
 {
