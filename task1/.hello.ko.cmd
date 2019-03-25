@@ -1,0 +1,1 @@
+cmd_/home/zhangzhaoqi/CS5250_A3_ZhangZhaoqi/task1/hello.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T ./scripts/module-common.lds  --build-id  -o /home/zhangzhaoqi/CS5250_A3_ZhangZhaoqi/task1/hello.ko /home/zhangzhaoqi/CS5250_A3_ZhangZhaoqi/task1/hello.o /home/zhangzhaoqi/CS5250_A3_ZhangZhaoqi/task1/hello.mod.o ;  true
