@@ -2,9 +2,12 @@
 #include <linux/init.h>
 #include <linux/module.h>
 MODULE_LICENSE("GPL");
+
+static char *who = "ZhangZhaoqi";
+MODULE_PARM(who, "s");
 static int hello_init(void)
 {
-    printk(KERN_ALERT "Hello, world\n");
+    printk(KERN_ALERT "Hello, world: %s\n", who);
     return 0;
 }
 static void hello_exit(void)
